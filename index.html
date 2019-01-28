@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="./bulma.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<style>
+  h6 {
+    padding-bottom: 5px;
+  }
+
+  .box {
+    background-color: #36363624;
+  }
+
+  .app-3-content-wrapper {
+    height: 23px;
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity .5s;
+  }
+
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
+  }
+</style>
+
+<body>
+
+  <div class="box">
+    <h6 class="is-size-5">Declarative render and reactiveness</h6>
+    <div class="box">
+      <div>
+        <div id="app-1">
+          {{ message }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h6 class="is-size-5">Bind (e.g. title)</h6>
+    <div class="box">
+      <div id="app-2">
+        <span v-bind:title="message">
+          Hover your mouse over for a few seconds
+          to see my dynamically bound title!
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h6 class="is-size-5">Conditionals and Enter/Leave Transitions</h6>
+    <div class="box">
+      <div id="app-3">
+        <div class='app-3-content-wrapper'>
+          <transition name="fade">
+            <span v-if="seen">Now you see me</span>
+          </transition>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h6 class="is-size-5">Loop</h6>
+    <div class="box">
+      <div id="app-4">
+        <ul class="menu-list">
+          <li v-for="(item, index) in todos">
+            {{ (index + 1) + '. '+ item.text }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="./app.js"></script>
+</body>
+
+</html>
