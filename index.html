@@ -31,61 +31,128 @@
   .fade-leave-to {
     opacity: 0;
   }
+
+  sombra-todo-item {
+    display: block;
+  }
+
+  sombra-item {
+    display: block;
+  }
+
 </style>
 
 <body>
 
+<div class="box">
+  <h6 class="is-size-5">App1. Declarative render and reactiveness</h6>
   <div class="box">
-    <h6 class="is-size-5">Declarative render and reactiveness</h6>
-    <div class="box">
-      <div>
-        <div id="app-1">
-          {{ message }}
-        </div>
+    <div>
+      <div id="app-1">
+        {{ message }}
       </div>
     </div>
   </div>
+</div>
 
+<div class="box">
+  <h6 class="is-size-5">App2. Bind (e.g. title)</h6>
   <div class="box">
-    <h6 class="is-size-5">Bind (e.g. title)</h6>
-    <div class="box">
-      <div id="app-2">
+    <div id="app-2">
         <span v-bind:title="message">
           Hover your mouse over for a few seconds
           to see my dynamically bound title!
         </span>
+    </div>
+  </div>
+</div>
+
+<div class="box">
+  <h6 class="is-size-5">App3. Conditionals and Enter/Leave Transitions</h6>
+  <div class="box">
+    <div id="app-3">
+      <div class='app-3-content-wrapper'>
+        <transition name="fade">
+          <span v-if="seen">Now you see me</span>
+        </transition>
       </div>
     </div>
   </div>
+</div>
+
+<div class="box">
+  <h6 class="is-size-5">App4. Loop</h6>
+  <div class="box">
+    <div id="app-4">
+      <ul class="menu-list">
+        <li v-for="(item, index) in todos">
+          {{ (index + 1) + '. '+ item.text }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="box">
+  <h6 class="is-size-5">App5. Handling User Input</h6>
+  <div class="box">
+    <div id="app-5">
+      <p>{{ message }}</p>
+      <button v-on:click="reverseMessage">Reverse Message</button>
+    </div>
+  </div>
+</div>
+
+<div class="box">
+  <h6 class="is-size-5">App6. Handling User Input. Events.</h6>
+  <div class="box">
+    <div id="app-6">
+      <p>{{ message }}</p>
+      <input v-model="message">
+    </div>
+  </div>
+</div>
+
+<div class="box">
 
   <div class="box">
-    <h6 class="is-size-5">Conditionals and Enter/Leave Transitions</h6>
-    <div class="box">
-      <div id="app-3">
-        <div class='app-3-content-wrapper'>
-          <transition name="fade">
-            <span v-if="seen">Now you see me</span>
-          </transition>
-        </div>
-      </div>
-    </div>
+    <h5 class="is-size-5">Composing with Components.</h5>
+    <figure class="image">
+      <img src="./assets/imgs/components.png" alt="components">
+    </figure>
   </div>
 
   <div class="box">
-    <h6 class="is-size-5">Loop</h6>
+    <h6 class="is-size-5">App7. Simple components.</h6>
     <div class="box">
-      <div id="app-4">
-        <ul class="menu-list">
-          <li v-for="(item, index) in todos">
-            {{ (index + 1) + '. '+ item.text }}
-          </li>
+      <div id="app-7">
+        <ul>
+          <sombra-todo-item></sombra-todo-item>
+          <sombra-todo-item></sombra-todo-item>
+          <sombra-todo-item></sombra-todo-item>
+          <sombra-todo-item></sombra-todo-item>
         </ul>
       </div>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-  <script src="./app.js"></script>
+
+  <div class="box">
+    <h6 class="is-size-5">App8. With props</h6>
+    <div class="box">
+      <div id="app-8">
+        <ol>
+          <todo-item v-for="item in todoList" v-bind:key="item.id" v-bind:todo="item">
+          </todo-item>
+        </ol>
+        <p>repeat</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="./app.js"></script>
 </body>
 
 </html>
