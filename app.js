@@ -1,9 +1,64 @@
+// **********************************************************************************************************************
+
 const app1 = new Vue({
   el: '#app-1',
   data: {
     message: 'Hey Sombra!'
   }
 });
+
+// **********************************************************************************************************************
+
+//trivial and stupid render
+const __render = function () {
+  const firstAppHost = document.getElementById("app-1");
+  const destination = document.getElementById("uniqueId");
+  if (!!destination) {
+    console.log('elem exists');
+    destination.innerText = _reactiveData.fm;
+  } else {
+    const newElement = document.createElement('p');
+    newElement.setAttribute('id', 'uniqueId');
+    console.log('creating new destination');
+    newElement.innerText = _reactiveData.fm;
+    firstAppHost.appendChild(newElement)
+  }
+};
+
+
+const _reactiveData = {fm: 'vue'};
+
+let initValue = _reactiveData["fm"];
+
+Object.defineProperty(_reactiveData, 'fm', {
+  get() {
+    return initValue
+  },
+  set(newVal) {
+    initValue = newVal;
+    console.log('i`ll notify');
+    __render();
+  }
+});
+
+// test
+
+let timerHolder;
+
+const __startTest = function () {
+  const fms = ['vue', 'react', 'angular', 'ember'];
+
+  let i = 0;
+
+  timerHolder = setInterval(() => {
+    _reactiveData.fm = fms[i];
+    i++;
+    if (i === 4) i = 0;
+  }, 3000);
+};
+
+const __stopTest = () => {clearInterval(timerHolder)};
+
 
 // **********************************************************************************************************************
 
