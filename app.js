@@ -57,7 +57,9 @@ const __startTest = function () {
   }, 3000);
 };
 
-const __stopTest = () => {clearInterval(timerHolder)};
+const __stopTest = () => {
+  clearInterval(timerHolder)
+};
 
 
 // **********************************************************************************************************************
@@ -132,6 +134,19 @@ const app7 = new Vue({
   }
 });
 
+// **********************************************************************************************************************
+// Lifecycle Hooks
+// - beforeCreate
+// - created
+// - beforeMount
+// - mounted
+// - beforeUpdate
+// - updated
+// - activated
+// - deactivated
+// - beforeDestroy
+// - destroyed
+// - errorCaptured
 // **********************************************************************************************************************
 
 Vue.component('todo-item', {
