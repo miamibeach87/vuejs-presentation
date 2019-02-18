@@ -153,12 +153,25 @@
   <div class="box">
     <h6 class="is-size-5">App9. Slots</h6>
     <div class="box">
-      <!--<div id="app-9">-->
-        <!--<ol>-->
-          <!--<todo-item v-for="item in todoList" v-bind:key="item.id" v-bind:todo="item">-->
-          <!--</todo-item>-->
-        <!--</ol>-->
-        <!--<p>repeat</p>-->
+      <div id="app-9">
+        <div>
+          <div class="box">
+            With slot:
+            <app-with-slot :text="msg">
+              <p style="color: red;">
+                Text for slot
+              </p>
+            </app-with-slot>
+          </div>
+          <div class="box">
+            Without:
+            <sombra-todo-item>
+              <p style="color: red;">
+                Text for slot
+              </p>
+            </sombra-todo-item>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -9,7 +9,6 @@ const app1 = new Vue({
 
 // **********************************************************************************************************************
 
-//trivial and stupid render
 const __render = function () {
   const firstAppHost = document.getElementById("app-1");
   const destination = document.getElementById("uniqueId");
@@ -32,12 +31,14 @@ let initValue = _reactiveData["fm"];
 
 Object.defineProperty(_reactiveData, 'fm', {
   get() {
+    console.log('I`m getter');
     return initValue
   },
   set(newVal) {
+    console.log('I`m setter');
+    console.log('I`ll notify');
     initValue = newVal;
-    console.log('i`ll notify');
-    __render();
+    // __render();
   }
 });
 
@@ -151,7 +152,7 @@ const app7 = new Vue({
 
 Vue.component('todo-item', {
   props: ['todo'],
-  template: '<p>{{todo.text}}</p>',
+  template: '<li>{{todo.text}}</li>',
 });
 
 
@@ -166,4 +167,17 @@ const app8 = new Vue({
   }
 });
 
+Vue.component('app-with-slot', {
+  props: ['text'],
+  template: '<div>{{text}}<slot></slot></div>',
+});
+
+const app9 = new Vue({
+  el: '#app-9',
+  data: function () {
+    return {
+      msg: 'Hello world!'
+    }
+  }
+});
 // **********************************************************************************************************************
