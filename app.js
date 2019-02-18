@@ -2,6 +2,7 @@
 
 const app1 = new Vue({
   el: '#app-1',
+  // Everything(almost) inside data is reactive
   data: {
     message: 'Hey Sombra!'
   }
